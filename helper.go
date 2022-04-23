@@ -76,6 +76,12 @@ func AutoSync(ctx context.Context, c *Client, realtime bool, recentInterval, ful
 			close(stream)
 		}()
 	}
+
+	errSync := c.FullSync()
+	if errSync != nil {
+		return errSync
+	}
+
 	var recentTicker *time.Ticker
 	var fullSyncTicker *time.Ticker
 	if recentInterval > 0 {
