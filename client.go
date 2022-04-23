@@ -143,7 +143,7 @@ func (c *Client) listenForUpdates(ctx context.Context, modChan chan DomainUpdate
 		c.m.Lock()
 		defer c.m.Unlock()
 		if c.streaming {
-			return fmt.Errorf("already listening for updates") //todo make these Error variables that can be checked
+			return fmt.Errorf("already listening for updates")
 		}
 		c.streaming = true
 		ctx, c.cancelFunc = context.WithCancel(ctx)
