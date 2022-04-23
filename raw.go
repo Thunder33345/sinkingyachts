@@ -33,7 +33,7 @@ type RawClient struct {
 //Note that X-Identity cannot be overwritten with it
 func NewRawClient(domain, identity string, webClient http.Client, options ...Option) RawClient {
 	h := make(http.Header, 2)
-	h.Set("User-Agent", "sinking-yachts/0.0 (todo url)") //@todo url
+	h.Set("User-Agent", "sinkingyachts/0.1 (https://github.com/Thunder33345/sinkingyachts)")
 
 	client := RawClient{
 		domain:      domain,
