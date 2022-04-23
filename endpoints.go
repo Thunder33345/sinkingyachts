@@ -1,4 +1,4 @@
-package sinking_yachts
+package sinkingyachts
 
 const (
 	endpointFeed   = "/feed"
