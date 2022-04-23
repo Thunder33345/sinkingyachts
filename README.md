@@ -2,6 +2,10 @@
 
 This is an unofficial API client for the Sinking Yachts API written in golang.
 
+See [go doc]() for the documentation
+
+run `go get github.com/thunder33345/sinkingyachts` to include the client in your project
+
 ## Client Interfaces
 
 This library provides 2 different interfaces for interacting with the API.
