@@ -49,37 +49,6 @@ func (m *DomainUpdate) UnmarshalJSON(bytes []byte) error {
 
 type empty struct{}
 
-//validationError is an error returned by endpointCheck
-//The details of what the error message consist of is unknown
-type validationError struct {
-	Detail []struct {
-		Loc  []string `json:"loc"`
-		Msg  string   `json:"msg"`
-		Type string   `json:"type"`
-	} `json:"detail"`
-}
-
-func (err validationError) Error() string {
-	msg := "validation error"
-	if len(err.Detail) > 0 {
-		msg += ": "
-	}
-	for i, d := range err.Detail {
-		if i > 0 {
-			msg += ", "
-		}
-		msg += fmt.Sprintf(`Type "%s" Message "%s" Locations:`, d.Type, d.Msg)
-		for i2, l := range d.Loc {
-			if i2 >= 1 {
-				msg += ","
-			}
-			msg += fmt.Sprintf(` "%s"`, l)
-		}
-	}
-
-	return msg
-}
-
 type unexpectedStatusError struct {
 	endpoint string
 	status   int

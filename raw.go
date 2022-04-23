@@ -112,14 +112,6 @@ func (c RawClient) Check(domain string) (bool, error) {
 		} else {
 			return false, nil
 		}
-	case 422:
-		dec := json.NewDecoder(resp.Body) //todo remove this
-		var valErr validationError
-		err := dec.Decode(&valErr)
-		if err != nil {
-			return false, err
-		}
-		return false, valErr
 	default:
 		return false, unexpectedStatusError{
 			endpoint: c.domain + endpointCheck,
