@@ -66,7 +66,9 @@ func SaveOnChange(ctx context.Context, c *Client, w io.Writer) error {
 
 //AutoSync is a helper that setup auto syncing functionality for Client
 //this function blocks and return only when cancelled by ctx, or occurrence of an error
-//it's recommended to use full sync, especially when realtime is enabled
+//you can use 0 to disable recent syncing and full syncing
+//though it's recommended to use full sync, especially when realtime is enabled
+//the recent interval is only useful when realtime is disabled
 func AutoSync(ctx context.Context, c *Client, realtime bool, recentInterval, fullSyncInterval time.Duration) error {
 	var stream chan error
 	modChan := make(chan DomainUpdate, 2)
